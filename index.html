@@ -6,6 +6,31 @@
     <title>TOP Rock Paper Scissors</title>
 </head>
 <body>
-    
+    <script>
+        const options = ["Rock", "Paper", "Scissors"];
+        let computerScore = 0;
+        let humanScore = 0;
+        
+        function getComputerChoice() {
+            let computerChoice = Math.floor(Math.random() * (0 - 3) + 3)
+            return options[computerChoice]
+        }
+
+        function getHumanChoice() {
+            let promptResponse = prompt("Greetings Human. Would you like to play a game? Please enter your choice of Rock, Paper or Scissors. May the best being win!");
+
+            let humanChoice = promptResponse.charAt(0).toUpperCase() + promptResponse.slice(1).toLowerCase();
+
+            for (let i=0; i<options.length; i++){
+                if (humanChoice === options[i]) {
+                    return options[i]
+                }
+            }
+        }
+
+        function playRound(humanChoice, computerChoice) {
+            
+        }
+    </script>
 </body>
 </html>
