@@ -1,12 +1,21 @@
+// variable initialization
+
 let computerScore = 0;
 let humanScore = 0;
-let roundCount = 0;
+let round = 0;
 let humanChoice;
 let computerChoice;
 
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+const quip = document.querySelector(".quip");
+let roundCount = document.querySelector(".round")
+let playerScoreDisplay = document.querySelector(".player-score")
+let computerScoreDisplay = document.querySelector(".computer-score")
+
+
+//functions
 
 function getComputerChoice() {
   const options = ["Rock", "Paper", "Scissors"];
@@ -18,44 +27,42 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
   if (computerChoice === humanChoice) {
-    console.log("It's a tie! Wanna try again?");
+    quip.textContent = "It's a tie! Wanna try again?";
   } else if (
     (humanChoice === "Rock" && computerChoice === "Scissors") ||
     (humanChoice === "Paper" && computerChoice === "Rock") ||
     (humanChoice === "Scissors" && computerChoice === "Paper")
   ) {
-    console.log("You Won!");
+    quip.textContent = "You Won!";
     humanScore++;
   } else {
     computerScore++;
-    console.log("HAHA I Win! Go again?");
+    quip.textContent = "HAHA I Win! Go again?";
   }
-  roundCount++;
+  round++;
 }
 
 rock.addEventListener("click", (e) => {
   humanChoice = e.target.textContent;
   getComputerChoice();
   playRound(humanChoice, computerChoice);
-  checkLogs();
+  updateScores();
 });
 paper.addEventListener("click", (e) => {
   humanChoice = e.target.textContent;
   getComputerChoice();
   playRound(humanChoice, computerChoice);
-  checkLogs();
+  updateScores();
 });
 scissors.addEventListener("click", (e) => {
   humanChoice = e.target.textContent;
   getComputerChoice();
   playRound(humanChoice, computerChoice);
-  checkLogs();
+  updateScores();
 });
 
-const checkLogs = () => {
-  console.log(roundCount);
-  console.log(humanChoice);
-  console.log(humanScore);
-  console.log(computerChoice);
-  console.log(computerScore);
+const updateScores = () => {
+  roundCount.textContent = round;
+  playerScoreDisplay.textContent = `Player Score: ${humanScore}`;
+  computerScoreDisplay.textContent = `Computer Score ${computerScore}`;
 };
