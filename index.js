@@ -1,3 +1,9 @@
+let computerScore = 0;
+let humanScore = 0;
+let roundCount = 0;
+let humanChoice;
+let computerChoice;
+
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
@@ -5,21 +11,10 @@ const scissors = document.querySelector("#scissors");
 function getComputerChoice() {
   const options = ["Rock", "Paper", "Scissors"];
 
-
   let index = Math.floor(Math.random() * options.length);
-  return options[index];
+  computerChoice = options[index];
+  return computerChoice;
 }
-
-function getHumanChoice() {
-  let;
-}
-
-let computerScore = 0;
-let humanScore = 0;
-let roundCount = 0;
-
-let humanChoice;
-let computerChoice = getComputerChoice();
 
 function playRound(humanChoice, computerChoice) {
   if (computerChoice === humanChoice) {
@@ -40,24 +35,27 @@ function playRound(humanChoice, computerChoice) {
 
 rock.addEventListener("click", (e) => {
   humanChoice = e.target.textContent;
-  playRound();
-  checkLogs()
+  getComputerChoice();
+  playRound(humanChoice, computerChoice);
+  checkLogs();
 });
 paper.addEventListener("click", (e) => {
   humanChoice = e.target.textContent;
-  playRound()
-  checkLogs()
+  getComputerChoice();
+  playRound(humanChoice, computerChoice);
+  checkLogs();
 });
 scissors.addEventListener("click", (e) => {
   humanChoice = e.target.textContent;
-  playRound()
-  checkLogs()
+  getComputerChoice();
+  playRound(humanChoice, computerChoice);
+  checkLogs();
 });
 
 const checkLogs = () => {
+  console.log(roundCount);
   console.log(humanChoice);
   console.log(humanScore);
   console.log(computerChoice);
   console.log(computerScore);
-  console.log(roundCount);
 };
